@@ -1,0 +1,14 @@
+# Virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Old broken image model (25 MB, not needed)
+mvp/mataas.h5
+mvp/mataas.json
+
+# Generated outputs (reproducible by running evaluate_live.py)
+mvp/confusion_matrix.png

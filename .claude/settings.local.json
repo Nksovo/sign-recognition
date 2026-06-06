@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"../../venv/Scripts/python.exe\" test_speed.py)",
+      "Bash(\"/c/Users/Nikhat Khamit/OneDrive/Desktop/sign-translator/venv/Scripts/python.exe\" test_speed.py)",
+      "Bash(\"/c/Users/Nikhat Khamit/OneDrive/Desktop/sign-translator/venv/Scripts/python.exe\" fast_mvp.py)",
+      "Bash(\"/c/Users/Nikhat Khamit/OneDrive/Desktop/sign-translator/venv/Scripts/python.exe\" inspect_model.py)",
+      "Skill(run)",
+      "Bash(venv/Scripts/python -c \"import cv2, mediapipe, numpy, tensorflow; print\\('OK'\\)\")",
+      "Bash(\"../venv/Scripts/python\" alphabet_mvp.py)",
+      "Bash(tasklist)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(venv/Scripts/python -c \"import mediapipe; print\\(mediapipe.__version__\\)\")",
+      "Bash(venv/Scripts/pip install *)",
+      "Bash(venv/Scripts/python -c \"import mediapipe.python.solutions.hands as h; print\\('found'\\)\")",
+      "Bash(venv/Scripts/python -c ' *)",
+      "Bash(../venv/Scripts/python -c ' *)",
+      "Bash(timeout 15 \"../venv/Scripts/python\" alphabet_mvp.py)",
+      "Bash(echo \"launched PID $!\")",
+      "Bash(\"../venv/Scripts/python\" inspect_model.py)",
+      "Bash(taskkill //F //IM python3.13.exe)",
+      "Bash(python -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(venv/Scripts/python -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(venv/Scripts/python -m py_compile mvp/landmark_utils.py)",
+      "Bash(venv/Scripts/python -)",
+      "Bash(venv/Scripts/python -c \"import sklearn, mediapipe, cv2, numpy; print\\('IMPORTS OK'\\)\")",
+      "Bash(\"../venv/Scripts/python\" -m py_compile landmark_utils.py)",
+      "Bash(\"../venv/Scripts/python\" -)",
+      "Bash(\"../venv/Scripts/python\" -m py_compile collect_data.py)",
+      "Bash(\"../venv/Scripts/python\" collect_data.py)",
+      "Bash(\"../venv/Scripts/python\" -m py_compile train_model.py)",
+      "Bash(\"../venv/Scripts/python\" train_model.py)",
+      "Bash(\"../venv/Scripts/python\" -m py_compile alphabet_landmarks.py)",
+      "Bash(\"../venv/Scripts/python\" alphabet_landmarks.py)",
+      "Bash(\"../venv/Scripts/python\" -m py_compile validate_model.py)",
+      "Bash(venv/Scripts/python -c \"import matplotlib, seaborn, sklearn, numpy; print\\('IMPORTS OK'\\)\")",
+      "Bash(\"../venv/Scripts/python\" -m py_compile evaluate_live.py)",
+      "Bash(\"../venv/Scripts/python\" evaluate_live.py)",
+      "Bash(gh auth *)"
+    ]
+  }
+}
