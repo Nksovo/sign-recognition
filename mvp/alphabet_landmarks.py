@@ -7,6 +7,10 @@ from mediapipe.tasks.python import vision as mp_vision
 from mediapipe.tasks.python import BaseOptions
 from mediapipe.tasks.python.vision.hand_landmarker import HandLandmarksConnections
 from landmark_utils import extract_features
+from collections import deque, Counter
+
+SMOOTH_WINDOW = 10
+recent_preds = deque(maxlen=SMOOTH_WINDOW)
 
 HAND_MODEL_PATH = 'gesture_recognizer.task'
 MIN_CONF = 0.35
@@ -81,16 +85,28 @@ try:
 
             features = extract_features(wrapped)
             probs = model.predict_proba([features])[0]
-            conf = float(np.max(probs))
-            letter = model.classes_[int(np.argmax(probs))]
+            raw_letter = model.classes_[int(np.argmax(probs))]
 
-            x1, y1, x2, y2 = get_bbox(frame, landmarks)
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+            recent_preds.append(raw_letter)
 
-            color = (0, 255, 0) if conf >= MIN_CONF else (0, 140, 255)
-            cv2.putText(frame, f'{letter}  {conf:.2f}',
-                        (x1, max(y1 - 15, 30)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.4, color, 3)
+            non_none = [p for p in recent_preds if p is not None]
+            if non_none:
+                smoothed_letter, smoothed_count = Counter(non_none).most_common(1)[0]
+                stability = smoothed_count / SMOOTH_WINDOW
+
+                if stability >= 0.6:
+                    color = (0, 255, 0)
+                else:
+                    color = (0, 140, 255)
+
+                x1, y1, x2, y2 = get_bbox(frame, landmarks)
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                label = f'{smoothed_letter}  ({smoothed_count}/{SMOOTH_WINDOW})'
+                cv2.putText(frame, label,
+                            (x1, max(y1 - 15, 30)),
+                            cv2.FONT_HERSHEY_SIMPLEX, 1.4, color, 3)
+        else:
+            recent_preds.append(None)
 
         curr_time = time.time()
         fps = 1.0 / (curr_time - prev_time) if (curr_time - prev_time) > 0 else 0
