@@ -36,7 +36,10 @@
       "Bash(venv/Scripts/python -c \"import matplotlib, seaborn, sklearn, numpy; print\\('IMPORTS OK'\\)\")",
       "Bash(\"../venv/Scripts/python\" -m py_compile evaluate_live.py)",
       "Bash(\"../venv/Scripts/python\" evaluate_live.py)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(cp landmark_data.pickle landmark_data_OLD42.pickle)",
+      "Bash(cp landmark_model.pickle landmark_model_OLD42.pickle)",
+      "Read(//c/c/Users/Nikhat Khamit/OneDrive/Desktop/sign-translator/**)"
     ]
   }
 }

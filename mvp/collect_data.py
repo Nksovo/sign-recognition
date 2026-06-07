@@ -7,7 +7,7 @@ from mediapipe.tasks.python import vision as mp_vision
 from mediapipe.tasks.python import BaseOptions
 from landmark_utils import extract_features
 
-LETTERS = ['M', 'N']
+LETTERS = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y']
 SAMPLES_PER_LETTER = 100
 DATA_FILE = 'landmark_data.pickle'
 HAND_MODEL_PATH = 'gesture_recognizer.task'
